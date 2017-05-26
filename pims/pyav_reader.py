@@ -246,7 +246,7 @@ class PyAVReaderTimed(FramesSequence):
 
         if frame.frame_no > i:
             # recurse with an additional offset of 16 frames
-            return self.seek(i - 16)
+            return self.seek(max(0, i - 16))
 
         # add the frame to the cache if succesful
         self._cache[frame.frame_no % len(self._cache)] = frame
